@@ -12,35 +12,32 @@
 
     <main>
         <section id="form">
+            <div>
+                <label for="description">Description</label>
+                <textarea id="description" rows="4" cols="50" placeholder="What do you need to do?" maxlength="250"
+                    name="task_name" required></textarea>
+            </div>
+            <div>
+                <select id="category" name="category">
+                    <option selected disabled="disabled">Select Category</option>
+                    <option value="work"> Work</option>
+                    <option value="school">School</option>
+                    <option value="personal">Personal</option>
+                    <option value="home">Home</option>
+                    <option value="other">Other</option>
+                </select>
 
-            <form input="text/html" id="task-form" action="/add-task" method="post">
-                <div>
-                    <label for="description">Description</label>
-                    <textarea id="description" rows="4" cols="50" placeholder="What do you need to do?" maxlength="250"
-                        name="task_name" required></textarea>
-                </div>
-                <div>
-                    <select id="category" name="category">
-                        <option selected disabled="disabled">Select Category</option>
-                        <option value="work"> Work</option>
-                        <option value="school">School</option>
-                        <option value="personal">Personal</option>
-                        <option value="home">Home</option>
-                        <option value="other">Other</option>
-                    </select>
-
-                    <label for="due-date">
-                        Start Date
-                    </label>
-                    <input type="date" id="due-date" name="due_date" placeholder="Due Date" required>
-                    <input type="submit" id="add-task-btn" value="Add Task">
-                </div>
-            </form>
+                <label for="due-date">
+                    Start Date
+                </label>
+                <input type="date" id="due-date" name="due_date" placeholder="Due Date" required>
+            </div>
         </section>
 
 
         <section id="buttons">
             <span>
+                <button id="add-task" class="button">Add Task</button>
                 <button id="delete-tasks" class="button">DELETE Tasks</button>
             </span>
         </section>

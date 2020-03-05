@@ -2,7 +2,20 @@ const express = require("express");
 const Task = require("../models/taskModel");
 
 const dateParser = (dateObj) => {
+    if (dateObj === null) {
+        return "Indefinite";
+    }
     return dateObj.toDateString();
+}
+
+const createTaskObj = (task) => {
+    let currentTask = {
+        task_name: task.taskName,
+        due_date: dateParser(task.dueDate),
+        category: task.category,
+        id: task._id
+    }
+    return currentTask;
 }
 
 module.exports.getHome = function (request, response) {
@@ -15,20 +28,16 @@ module.exports.getHome = function (request, response) {
             return;
         }
         for (let task of tasks) {
-            let currentTask = {
-                task_name: task.taskName,
-                due_date: dateParser(task.dueDate),
-                category: task.category,
-                id: task._id
-            }
+            let currentTask = createTaskObj(task);
             tasks_arr.push(currentTask);
         }
         return response.render("home", locals);
     });
 }
 
-
 module.exports.addTask = function (request, response) {
+
+    console.log(request.body);
 
     Task.create({
         taskName: request.body.task_name,
@@ -39,8 +48,8 @@ module.exports.addTask = function (request, response) {
             console.log("Error in creating a new task in the DB", error);
         }
         else {
-            console.log("created new task in the DB");
-            return response.redirect("back");
+            let currentTask = createTaskObj(newTask);
+            return response.json(currentTask);
         }
     });
 }

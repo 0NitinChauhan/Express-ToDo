@@ -48,6 +48,9 @@ module.exports.addTask = function (request, response) {
             console.log("Error in creating a new task in the DB", error);
         }
         else {
+            if (newTask.dueDate == "") {
+                newTask.dueDate = "Indefinte"
+            }
             let currentTask = createTaskObj(newTask);
             return response.json(currentTask);
         }

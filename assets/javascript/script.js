@@ -2,7 +2,7 @@ function addListItem(taskObj) {
     let string = `<li class="task-list-element" id=${taskObj.id}>
                 <div class="details">
                 <label class="task-item-label" for=task-${taskObj.id}><input type="checkbox" class="task-item" name="content"
-                id=task-${taskObj.id}>${taskObj.task_name}:${taskObj.due_date}</label>
+                id=task-${taskObj.id}>${taskObj.task_name}<br><i class="far fa-calendar-alt"></i>${taskObj.due_date}</label>
                 </div></li>`;
     console.log(string);
 
@@ -27,6 +27,7 @@ function addTask() {
 
 function deleteTasks() {
 
+    console.log("inside");
     let labelList = $(".task-item-label");
     let tasksArr = prepareTaskList(labelList);
 
@@ -42,8 +43,6 @@ function prepareTaskList(labelList) {
         if ($(query)[0].checked) {
             let textContent = label.textContent;
             let id = $(query)[0].id.slice("text-".length);
-            console.log(id);
-            console.log(textContent);
             tasksArr.push({ "taskName": textContent, "id": id });
         }
     }

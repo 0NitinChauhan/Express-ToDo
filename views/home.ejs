@@ -2,66 +2,110 @@
 
 <head>
     <title><%= title %></title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="css/styles.css">
 </head>
 
-<body align="center">
-
-    <header id="body-header" class="invitation">
+<body>
+    <header id="body-header" class="invitation display-4 text-center text-muted">
+        TODO List
     </header>
-
-    <main>
-        <section id="form">
-            <div>
-                <label for="description">Description</label>
-                <textarea id="description" rows="4" cols="50" placeholder="What do you need to do?" maxlength="250"
-                    name="task_name" required></textarea>
-            </div>
-            <div>
-                <select id="category" name="category">
-                    <option selected disabled="disabled">Select Category</option>
-                    <option value="work"> Work</option>
-                    <option value="school">School</option>
-                    <option value="personal">Personal</option>
-                    <option value="home">Home</option>
-                    <option value="other">Other</option>
-                </select>
-
-                <label for="due-date">
-                    Start Date
-                </label>
-                <input type="date" id="due-date" name="due_date" placeholder="Due Date" required>
-            </div>
-        </section>
-
-
-        <section id="buttons">
-            <span>
-                <button id="add-task" class="button">Add Task</button>
-                <button id="delete-tasks" class="button">DELETE Tasks</button>
-            </span>
-        </section>
-
-        <section class="task-list">
-            <ul id="incomplete-tasks">
-                <% for(let task of tasks_arr){ %>
-
-                <li class="task-list-element" id=<%= task.id %>>
-                    <div class="details">
-                        <label class="task-item-label" for=<%= `task-${task.id}` %>><input type="checkbox"
-                                class="task-item" name="content"
-                                id=<%= `task-${task.id}` %>><%= task.task_name%>:<%= task.due_date %></label>
+    <!-- class="border border-seconddary p-3-->
+    <main class="mx-auto" style="width: 500px;">
+        <section id="form-section">
+            <div id="form" class="border border-secondary p-2">
+                <div class="p-1">
+                    <label for="description" class="text-muted">Description</label>
+                    <textarea id="description" class="form-control todo-list-input" rows="2" cols="50"
+                        placeholder="What do you need to do?" maxlength="100" name="task_name" required></textarea>
+                </div>
+                <div id="container-specs" class="p-2">
+                    <div>
+                        <select id="category" name="category">
+                            <option selected disabled="disabled">Select Category</option>
+                            <option value="work"> Work</option>
+                            <option value="school">School</option>
+                            <option value="personal">Personal</option>
+                            <option value="home">Home</option>
+                            <option value="other">Other</option>
+                        </select>
                     </div>
-                </li>
-                <%} %>
-            </ul>
+                    <div>
+                        <label for="due-date">
+                            Due Date
 
+                            <input type="date" id="due-date" name="due_date" placeholder="Due Date" value="Due Date"
+                                required>
+                        </label>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+        <section id="buttons" class="border border-secondary p-3">
+
+            <div class="col-md-6 text-center">
+                <button id="add-task" class="button btn btn-primary btn btn-space center-block">
+
+                    <i class="fas fa-plus"></i>
+                    Add Task</button>
+            </div>
+
+            <div class="col-md-6 text-center">
+                <button id="delete-tasks" class="button btn btn-primary btn btn-space center-block">
+                    <i class="fas fa-trash"></i>
+                    Delete Tasks</button>
+            </div>
+
+        </section>
+
+        <section class="task-list border border-secondary">
+            <div id="container-list">
+                <ul id="incomplete-tasks">
+                    <% for(let task of tasks_arr){ %>
+
+                    <div class="details">
+                        <li class="task-list-element" id=<%= task.id %>>
+
+                            <label class="task-item-label" for=<%= `task-${task.id}` %>><input type="checkbox"
+                                    class="task-item" name="content" id=<%= `task-${task.id}` %>><%= task.task_name%>
+                                <br>
+                                <i class="far fa-calendar-alt"></i><%= task.due_date %></label>
+
+                        </li>
+                    </div>
+
+                    <%} %>
+                </ul>
+            </div>
         </section>
 
     </main>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.js"
         integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+
+    <script src="https://kit.fontawesome.com/b5f48b0055.js" crossorigin="anonymous"></script>
     <script src="javascript/script.js"></script>
+
 </body>
 
 </html>

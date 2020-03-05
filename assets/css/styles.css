@@ -1,6 +1,10 @@
 body{
     color: green;
-    margin: 0px;
+    align-items: center;
+}
+
+#buttons{
+    display: flex;
 }
 
 #incomplete-tasks{
@@ -9,19 +13,33 @@ body{
 
 #body-header{
     color: black;
-    height: 200px;
-    background-image: url(../images/header-image.jpeg);
+    
+    /*background-image: url(../images/header-image.jpeg);*/
     
     background-repeat: no-repeat;
     background-position: center;
     
 }
 
-.button{
-    background-color: grey;
-}
 .button:hover{
     color:lightgray;
     border-bottom: 1px solid white;
     transition: color 0.5s border-bottom 4s;
+}
+
+.btn-space {
+    margin-right: 5px;
+    align-items: center;
+}
+
+#container-specs{
+    display: flex;
+    justify-content: space-around;
+}
+
+
+#incomplete-tasks{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }

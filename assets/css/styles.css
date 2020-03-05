@@ -1,0 +1,27 @@
+body{
+    color: green;
+    margin: 0px;
+}
+
+#incomplete-tasks{
+    list-style-type: none;
+}
+
+#body-header{
+    color: black;
+    height: 200px;
+    background-image: url(../images/header-image.jpeg);
+    
+    background-repeat: no-repeat;
+    background-position: center;
+    
+}
+
+.button{
+    background-color: grey;
+}
+.button:hover{
+    color:lightgray;
+    border-bottom: 1px solid white;
+    transition: color 0.5s border-bottom 4s;
+}

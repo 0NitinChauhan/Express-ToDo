@@ -1,0 +1,70 @@
+<html>
+
+<head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body align="center">
+
+    <header id="body-header" class="invitation">
+    </header>
+
+    <main>
+        <section id="form">
+
+            <form input="text/html" id="task-form" action="/add-task" method="post">
+                <div>
+                    <label for="description">Description</label>
+                    <textarea id="description" rows="4" cols="50" placeholder="What do you need to do?" maxlength="250"
+                        name="task_name" required></textarea>
+                </div>
+                <div>
+                    <select id="category" name="category">
+                        <option selected disabled="disabled">Select Category</option>
+                        <option value="work"> Work</option>
+                        <option value="school">School</option>
+                        <option value="personal">Personal</option>
+                        <option value="home">Home</option>
+                        <option value="other">Other</option>
+                    </select>
+
+                    <label for="due-date">
+                        Start Date
+                    </label>
+                    <input type="date" id="due-date" name="due_date" placeholder="Due Date" required>
+                    <input type="submit" id="add-task-btn" value="Add Task">
+                </div>
+            </form>
+        </section>
+
+
+        <section id="buttons">
+            <span>
+                <button id="delete-tasks" class="button">DELETE Tasks</button>
+            </span>
+        </section>
+
+        <section class="task-list">
+            <ul id="incomplete-tasks">
+                <% for(let task of tasks_arr){ %>
+
+                <li class="task-list-element" id=<%= task.id %>>
+                    <div class="details">
+                        <label class="task-item-label" for=<%= `task-${task.id}` %>><input type="checkbox"
+                                class="task-item" name="content"
+                                id=<%= `task-${task.id}` %>><%= task.task_name%>:<%= task.due_date %></label>
+                    </div>
+                </li>
+                <%} %>
+            </ul>
+
+        </section>
+
+    </main>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script src="javascript/script.js"></script>
+</body>
+
+</html>

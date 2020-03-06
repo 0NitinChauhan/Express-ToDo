@@ -39,9 +39,9 @@
                     <div>
                         <label for="due-date">
                             Due Date
-
                             <input type="date" id="due-date" name="due_date" placeholder="Due Date" value="Due Date"
                                 required>
+
                         </label>
                     </div>
 
@@ -67,24 +67,25 @@
 
         </section>
 
-        <section class="task-list border border-secondary">
+        <section class="task-list">
             <div id="container-list">
-                <ul id="incomplete-tasks">
+                <table id="incomplete-tasks" class="table table-bordered">
                     <% for(let task of tasks_arr){ %>
 
-                    <div class="details">
-                        <li class="task-list-element" id=<%= task.id %>>
+                    <tr class="task-list-row">
+                        <td class="task-list-element" id=<%= task.id %>>
 
                             <label class="task-item-label" for=<%= `task-${task.id}` %>><input type="checkbox"
-                                    class="task-item" name="content" id=<%= `task-${task.id}` %>><%= task.task_name%>
-                                <br>
+                                    class="task-item p-2" name="content"
+                                    id=<%= `task-${task.id}` %>><%= task.task_name%> -
+                                (<%= task.category %>)
+                                <br><br>
                                 <i class="far fa-calendar-alt"></i><%= task.due_date %></label>
-
-                        </li>
-                    </div>
+                        </td>
+                    </tr>
 
                     <%} %>
-                </ul>
+                </table>
             </div>
         </section>
 

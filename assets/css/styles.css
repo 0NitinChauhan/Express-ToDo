@@ -38,8 +38,12 @@ body{
 }
 
 
-#incomplete-tasks{
+#incomplee-tasks{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+}
+
+.task-list-label{
+    padding-left: 4px;
 }

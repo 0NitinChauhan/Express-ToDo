@@ -1,23 +1,29 @@
 const express = require("express");
 const Task = require("../models/taskModel");
 
+/** to parse date object received from DB */
 const dateParser = (dateObj) => {
     if (dateObj === null) {
         return "Indefinite";
     }
+    else if (dateObj === undefined) {
+        return "Undefined";
+    }
     return dateObj.toDateString();
 }
 
+/** helper function to create task object based on DB entry*/ 
 const createTaskObj = (task) => {
     let currentTask = {
         task_name: task.taskName,
         due_date: dateParser(task.dueDate),
         category: task.category,
-        id: task._id
+        id: task._id // use mongoDB id for each task as unique identifier in the HTML page
     }
     return currentTask;
 }
 
+/** controller function for home page */
 module.exports.getHome = function (request, response) {
     let tasks_arr = [];
     let locals = { "title": "Home", "tasks_arr": tasks_arr };
@@ -35,6 +41,7 @@ module.exports.getHome = function (request, response) {
     });
 }
 
+/** controller function for adding new task */
 module.exports.addTask = function (request, response) {
 
     console.log(request.body);
@@ -57,6 +64,7 @@ module.exports.addTask = function (request, response) {
     });
 }
 
+/** controller function for deleting tasks */
 module.exports.deleteTasks = function (request, response) {
     // create ids array to delete multiple items based on id
     let ids = [];
